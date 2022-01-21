@@ -1,3 +1,3 @@
-- name: check_elastic_service
+- name: check_kong_service
   debug:
-    var: check_elastic_service.stdout
+    var: check_kong_service.stdout
