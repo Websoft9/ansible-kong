@@ -28,8 +28,8 @@
     dest: '{{item.dest}}'
     state: link
   with_items:
-    - {src: '/var/lib/docker/volumes/kong-kong-postgres/_data', dest: '{{kong_root_directory}}'/volumes/postgres}
-    - {src: '/var/lib/docker/volumes/kong-kong-postgres/_data', dest: /data/db/postgres/data}
+    - { src: '/var/lib/docker/volumes/kong-kong-postgres/_data', dest: /data/wwwroot/kong/volumes/postgres }
+    - { src: '/var/lib/docker/volumes/kong-kong-postgres/_data', dest: /data/db/postgres/data }
 
 - name: Check kong,konga version
   shell: |
