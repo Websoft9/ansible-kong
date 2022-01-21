@@ -1,7 +1,7 @@
 # CHANGELOG
 
-## Release Kong-v7.13.4 2021-8-10
+## Release Kong-v2.7.0 2022-01-21
 
 ### Fixes and Enhancements
 
-- Release Kong-v7.13.4 #1
+- Release Kong-v2.7.0
