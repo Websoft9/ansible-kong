@@ -33,7 +33,9 @@
 
 - name: Check kong,konga version
   shell: |
-    sudo echo "kong version" /data/logs/install_version.txt
+    sudo echo kong version: `docker exec -it kong bash -c "env |grep KONG_VERSION |cut -d= -f2"` |sudo tee -a /data/logs/install_version.txt
+    sudo echo konga version: `docker exec -it kong-konga bash -c  'cat package.json  |grep version |cut -d\" -f4'` |sudo tee -a /data/logs/install_version.txt
+    sudo echo postgres version: `docker exec -it kong-database  bash -c "env |grep PG_MAJOR |cut -d= -f2"` |sudo tee -a /data/logs/install_version.txt
 
 - name: Check kong Service
   shell: sudo docker ps
