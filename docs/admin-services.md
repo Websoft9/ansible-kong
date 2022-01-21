@@ -1,17 +1,17 @@
 # Start or Stop the Services
 
-These commands are required when you use the RabbitMQ of Websoft9.
+These commands are required when you use the Kong of Websoft9.
 
-### RabbitMQ
+### Kong
 
 ```shell
-sudo systemctl start rabbitmq-server
-sudo systemctl stop rabbitmq-server
-sudo systemctl restart rabbitmq-server
-sudo systemctl status rabbitmq-server
+sudo systemctl start kong-server
+sudo systemctl stop kong-server
+sudo systemctl restart kong-server
+sudo systemctl status kong-server
 
-# you can use this debug mode if RabbitMQ service can't run
-rabbitmq-server console
+# you can use this debug mode if Kong service can't run
+kong-server console
 ```
 
 ### MySQL
@@ -60,6 +60,7 @@ sudo systemctl status docker
 ```
 
 ### Docker-Compose
+
 ```
 # Create Containers
 sudo docker-compose up -d

@@ -1,19 +1,19 @@
 # FAQ
 
-#### How can I enable the debug mode of RabbitMQ service?
+#### How can I enable the debug mode of Kong service?
 
 ```
-systemctl stop rabbitmq-server
-rabbitmq-server console
+systemctl stop kong-server
+kong-server console
 ```
 
-#### Can I reset password of RabbitMQ by command?
+#### Can I reset password of Kong by command?
 
-Yes, e.g `rabbitmqctl change_password  admin newpassword`
+Yes, e.g `kongctl change_password admin newpassword`
 
-#### If there is no domain name, can I deploy RabbitMQ?
+#### If there is no domain name, can I deploy Kong?
 
-Yes, access RabbitMQ by *http://Server's Internet IP:8161*.
+Yes, access Kong by _http://Server's Internet IP:8161_.
 
 #### What is the password for the database root user?
 
@@ -21,9 +21,9 @@ The password is stored in the server related file `/credentials/password.txt`.
 
 #### Is there a web-base GUI database management tool?
 
-Yes, phpMyAdmin is included. Visit by *http://Server's Internet IP:9090*.
+Yes, phpMyAdmin is included. Visit by _http://Server's Internet IP:9090_.
 
-#### Is it possible to modify the source path of RabbitMQ?
+#### Is it possible to modify the source path of Kong?
 
 No.
 
@@ -39,9 +39,9 @@ find /data/wwwroot -type f -exec chmod 640 {} \;
 
 #### What's the difference between Deployment and Installation?
 
-- Deployment is a process of installing and configuring a series of software to the server in a different order, which is a complex system engineering.  
-- Installation is the process of starting the initial wizard after the application is prepared.  
-- Installation is simpler than deployment. 
+- Deployment is a process of installing and configuring a series of software to the server in a different order, which is a complex system engineering.
+- Installation is the process of starting the initial wizard after the application is prepared.
+- Installation is simpler than deployment.
 
 #### What's Cloud Platform?
 

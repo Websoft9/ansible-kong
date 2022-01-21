@@ -1,29 +1,29 @@
 # Deployment
 
-**Deployment is to copy the pre-installed RabbitMQ package online to your Cloud Server**. For example, after the user subscribes RabbitMQ on the Cloud Platform, the Platform will automatically copy the RabbitMQ to the corresponding Cloud Server.
+**Deployment is to copy the pre-installed Kong package online to your Cloud Server**. For example, after the user subscribes Kong on the Cloud Platform, the Platform will automatically copy the Kong to the corresponding Cloud Server.
 
-- If RabbitMQ has been deployed, go to [Initial Installation](/stack-installation.md) to complete the operation.
-- If not, you need to deploy RabbitMQ to your cloud server first.
+- If Kong has been deployed, go to [Initial Installation](/stack-installation.md) to complete the operation.
+- If not, you need to deploy Kong to your cloud server first.
 
-We offer two schemes for RabbitMQ deployment and results are the same.
+We offer two schemes for Kong deployment and results are the same.
 
 ## Deploy by Image
 
-**To deploy by Image** means to start instance based on RabbitMQ images. **RabbitMQ Image** provide OS and software environment needed for RabbitMQ.
+**To deploy by Image** means to start instance based on Kong images. **Kong Image** provide OS and software environment needed for Kong.
 
 For users with experience with cloud servers, to deploy by Image means "one-click deployment".
 
-Websoft9 publishes [RabbitMQ image](https://apps.websoft9.com/rabbitmq) on Cloud Platforms and there are three methods to deploy it.
+Websoft9 publishes [Kong image](https://apps.websoft9.com/kong) on Cloud Platforms and there are three methods to deploy it.
 
-* When **Create New Instance**, you can select the RabbitMQ image as the system boot template.
-* When you **Subscribe RabbitMQ** at Marketplace, the system will ask you to create a new instance for this image in the meantime.
-* When **Re-install OS** for you instance, you can replace the existing image with a RabbitMQ image.
+- When **Create New Instance**, you can select the Kong image as the system boot template.
+- When you **Subscribe Kong** at Marketplace, the system will ask you to create a new instance for this image in the meantime.
+- When **Re-install OS** for you instance, you can replace the existing image with a Kong image.
 
 ## Deploy by Script
 
 **To Deploy by Script** means to run a script on your cloud instance to pull the pre-installed package online to your instance and configure it at the same time.
 
-Websoft9 provides the [RabbitMQ ansible automation script](https://github.com/Websoft9/ansible-rabbitmq) on Github. If you are familiar with Ansible, you can deploy the RabbitMQ to the instance automatically.
+Websoft9 provides the [Kong ansible automation script](https://github.com/Websoft9/ansible-kong) on Github. If you are familiar with Ansible, you can deploy the Kong to the instance automatically.
 
 ## Comparison
 

@@ -1,0 +1,2 @@
+kong_git_url: "https://github.com/Websoft9/docker-kong.git"
+kong_root_directory: "/data/wwwroot/kong"

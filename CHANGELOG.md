@@ -1,12 +1,7 @@
 # CHANGELOG
 
-## Release Gitlab-v13.8.1  2021-2-3
+## Release Kong-v7.13.4 2021-8-10
 
-### Fixes
-- AWS AmazonLinux2 update error #3
+### Fixes and Enhancements
 
-### Enhancements
-- Upgrade from v13.2.1 to v13.8.2 #3
-
-
-
+- Release Kong-v7.13.4 #1

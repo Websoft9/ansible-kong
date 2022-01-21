@@ -4,24 +4,24 @@
 
 ## 配置
 
-参考官方方案：https://www.rabbitmq.com/configure.html
+Kong 目录下提供了 Kong Stack 各个组件的配置文件，用户可以修改配置文件，然后重启容器即可
 
 ## 域名绑定
 
-绑定域名的前置条件是：已经完成域名解析（登录域名控制台，增加一个A记录指向服务器公网IP）  
+绑定域名的前置条件是：已经完成域名解析（登录域名控制台，增加一个 A 记录指向服务器公网 IP）
 
 完成域名解析后，从服务器安全和后续维护考量，需要完成**域名绑定**：
 
-RabbitMQ 域名绑定操作步骤：
+Kong 域名绑定操作步骤：
 
-1. 确保域名解析已经生效  
+1. 确保域名解析已经生效
 2. 使用 SFTP 工具登录云服务器
-3. 修改 [Nginx虚拟机主机配置文件](/zh/stack-components.md#nginx)，将其中的 **server_name** 项的值修改为你的域名
+3. 修改 [Nginx 虚拟机主机配置文件](/zh/stack-components.md#nginx)，将其中的 **server_name** 项的值修改为你的域名
    ```text
    server
    {
    listen 80;
-   server_name rabbitmq.yourdomain.com;  # 此处修改为你的域名
+   server_name kong.yourdomain.com;  # 此处修改为你的域名
    ...
    }
    ```
@@ -29,21 +29,19 @@ RabbitMQ 域名绑定操作步骤：
 
 ## 重置密码
 
-常用的 RabbitMQ 重置密码相关的操作主要有修改密码和找回密码两种类型：
+常用的 Kong 重置密码相关的操作主要有修改密码和找回密码两种类型：
 
 ### 修改密码
 
-1. 登录 RabbitMQ 后台，依次打开：【Manage】>【Staff】，找到所需修改密码的账号对象
-  ![RabbitMQ 修改密码](https://libs.websoft9.com/Websoft9/DocsPicture/en/rabbitmq/rabbitmq-modifypw001-websoft9.png)
-
-2. 开始修改密码
-  ![RabbitMQ 修改密码](https://libs.websoft9.com/Websoft9/DocsPicture/en/rabbitmq/rabbitmq-modifypw002-websoft9.png)
+登录 Kibana 后，右上角用户图标的【用户配置文件】即可修改密码
 
 ### 找回密码
 
-如果用户忘记了密码，建议通过邮件的方式找回密码：
+如果用户忘记了密码，需通过重新运行容器的方式重置密码：
 
-1. 完成 [SMTP 设置](/zh/solution-smtp.md)
+```
+cd /data/wwwroot/kong
+docker-compose down && docker-compose up -d
+```
 
-2. 打开 RabbitMQ 登录页面，点击【Forgot】开始通过邮件找回密码
-  ![Ghost 找回密码](https://libs.websoft9.com/Websoft9/DocsPicture/en/rabbitmq/rabbitmq-forgetpw-websoft9.png)
+`.env`文件中的 **DB_ES_PASSWORD** 变量即重置后的密码

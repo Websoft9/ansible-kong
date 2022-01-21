@@ -16,9 +16,10 @@ module.exports = [
     title: '实践指南',
     collapsable: false,
     children: [
+      '/zh/solution-study',
       '/zh/solution-smtp',
       '/zh/solution-https',
-      '/zh/solution-cli',
+      '/zh/solution-api',
       '/zh/solution-backup',
       '/zh/solution-upgrade',
       '/zh/solution-more',
@@ -30,7 +31,6 @@ module.exports = [
     collapsable: false,
     children: [
       '/zh/admin-services',
-      '/zh/admin-mysql',
       ['https://support.websoft9.com/docs/linux/zh/webs-nginx.html','Nginx'],
       ['https://support.websoft9.com/docs/linux/zh/admin-practices.html','Linux'],
     ]

@@ -1,0 +1,3 @@
+- name: check_elastic_service
+  debug:
+    var: check_elastic_service.stdout

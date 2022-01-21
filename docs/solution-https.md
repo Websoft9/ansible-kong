@@ -1,8 +1,8 @@
 # SSL/HTTPS
 
-Before setting, you have to complete [binding domain](/solution-more.md) and make sure you can access RabbitMQ by HTTP.
+Before setting, you have to complete [binding domain](/solution-more.md) and make sure you can access Kong by HTTP.
 
-RabbitMQ deployment package has installed the SSL module of Nginx and open Certificate Authority **[Let's Encrypt](https://letsencrypt.org/)** for you to configure the HTTPS quickly and conveniently.
+Kong deployment package has installed the SSL module of Nginx and open Certificate Authority **[Let's Encrypt](https://letsencrypt.org/)** for you to configure the HTTPS quickly and conveniently.
 
 > Except for the [vhost configuration file](/stack-components.md#nginx), it doesn't need modify any Nginx configuration file for HTTPS.
 
@@ -20,14 +20,14 @@ sudo certbot
 
 If you have applied for a commercial certificate, complete the HTTPS configuration in just three steps:
 
-1. Upload your certificate, file of the certificate chain and secret key to the directory: */data/cert*.
+1. Upload your certificate, file of the certificate chain and secret key to the directory: _/data/cert_.
 
-2. Open the vhost configuration file: */etc/nginx/conf.d/default.conf*.
+2. Open the vhost configuration file: _/etc/nginx/conf.d/default.conf_.
 
-3. Insert the **HTTPS template** into *server{  }* and modify your certificate path.
-   ``` text
+3. Insert the **HTTPS template** into _server{ }_ and modify your certificate path.
+   ```text
    #-----HTTPS template start------------
-   listen 443 ssl; 
+   listen 443 ssl;
    ssl_certificate /data/cert/xxx.crt;
    ssl_certificate_key /data/cert/xxx.key;
    ssl_trusted_certificate /data/cert/chain.pem;

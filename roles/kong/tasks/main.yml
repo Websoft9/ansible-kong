@@ -1,0 +1,41 @@
+- name: Delete kong dir for sec_installation
+  shell: rm -rf {{kong_root_directory}}
+
+- name: Clone Kong in Websoft9
+  git:
+    repo: "{{kong_git_url}}"
+    dest: "{{kong_root_directory}}"
+
+- name: Rename and Run docker-compose
+  shell: |
+    docker-compose up -d
+    sleep 30
+  args:
+    chdir: "{{kong_root_directory}}"
+
+- name: Recursively create directory at Kong root dir
+  file:
+    path: "{{ item }}"
+    state: directory
+    recurse: yes
+  with_items:
+    - "{{kong_root_directory}}/volumes"
+    - "/data/db/postgres"
+
+- name: Create docker self volumes to kong
+  file:
+    src: '{{item.src}}'
+    dest: '{{item.dest}}''
+    state: link
+  with_items:
+    - {src: '/var/lib/docker/volumes/kong-kong-postgres/_data', dest: "{{kong_root_directory}}"/volumes/postgres}
+    - {src: '/var/lib/docker/volumes/kong-kong-postgres/_data', dest: /data/db/postgres/data}
+
+- name: Check kong,konga version
+  shell: |
+    sudo echo -e "kong_version: `docker exec -it kong-elasticsearch bin/elasticsearch --version | awk -F ' ' '{print $2}'`" |sudo tee -a /data/logs/install_version.txt
+
+- name: Check kong Service
+  shell: sudo docker ps
+  register: check_kong_service
+  notify: check_kong_service
