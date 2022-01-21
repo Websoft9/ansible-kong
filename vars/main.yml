@@ -8,7 +8,17 @@ nginx_vhost_mode: "reverse"
 nginx_reverse_proxy_port: "9001"
 nginx_appname: "Kong"
 
+docker_applications: 
+  - pgadmin
+
 init_docker:
+  pgadmin:
+    admin_username: user@domain.com
+    admin_password: "SuperSecret"
+    service_after: "docker.service"
+    compose_path: "/data/apps/pgadmin/docker-compose.yml"
+    compose_commands:
+      - sudo sed -i "s/SuperSecret/$new_password/g" /data/apps/pgadmin/docker-compose.yml
   kong:
     db: postgres
     db_name: kong
