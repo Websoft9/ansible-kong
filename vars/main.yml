@@ -8,10 +8,13 @@ nginx_vhost_mode: "reverse"
 nginx_reverse_proxy_port: "9001"
 nginx_appname: "Kong"
 
-init_application:
+init_docker:
   kong:
-    username: elastic
-    password: "elastic123"
-    commands:
-      - sudo sed -i "s/elastic123/$new_password/g" `grep 'elastic123' /data/wwwroot/kong/.env -rnl`
-      - sudo sed -i "s/elastic123/$new_password/g" `grep 'elastic123' /data/wwwroot/kong/docker-kong/src/logstash/pipeline/logstash.conf -rnl`
+    db: postgres
+    db_name: kong
+    db_username: kong
+    db_password: "123456"
+    service_after: "docker.service"
+    compose_path: "/data/wwwroot/kong/docker-compose.yml"
+    compose_commands:
+      - 'sudo sed -i "s/DB_POSTGRES_PASSWORD=.*/DB_POSTGRES_PASSWORD=$new_password/g" /data/wwwroot/kong/.env'
