@@ -24,12 +24,18 @@
 
 - name: Create docker self volumes to kong
   file:
-    src: '{{item.src}}'
-    dest: '{{item.dest}}'
+    src: "{{item.src}}"
+    dest: "{{item.dest}}"
     state: link
   with_items:
-    - { src: '/var/lib/docker/volumes/kong-kong-postgres/_data', dest: /data/wwwroot/kong/volumes/postgres }
-    - { src: '/var/lib/docker/volumes/kong-kong-postgres/_data', dest: /data/db/postgres/data }
+    - {
+        src: "/var/lib/docker/volumes/kong_kong-postgres/_data",
+        dest: /data/wwwroot/kong/volumes/postgres,
+      }
+    - {
+        src: "/var/lib/docker/volumes/kong_kong-postgres/_data",
+        dest: /data/db/postgres/data,
+      }
 
 - name: Check kong,konga version
   shell: |
