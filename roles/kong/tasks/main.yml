@@ -28,14 +28,14 @@
     dest: "{{item.dest}}"
     state: link
   with_items:
-    - {src: "/var/lib/docker/volumes/kong_kong-postgres/_data",dest: /data/wwwroot/kong/volumes/postgres}
-    - {src: "/var/lib/docker/volumes/kong_kong-postgres/_data",dest: /data/db/postgres/data}
+    - {src: "/var/lib/docker/volumes/kong_postgres/_data",dest: /data/wwwroot/kong/volumes/postgres}
+    - {src: "/var/lib/docker/volumes/kong_postgres/_data",dest: /data/db/postgres/data}
 
 - name: Check kong,konga version
   shell: |
-    sudo echo kong version: `docker exec -it kong bash -c "env |grep KONG_VERSION |cut -d= -f2"` |sudo tee -a /data/logs/install_version.txt
+    sudo echo kong version: `docker exec -it kong bash -c "kong version"` |sudo tee -a /data/logs/install_version.txt
     sudo echo konga version: `docker exec -it kong-konga bash -c  'cat package.json  |grep version |cut -d\" -f4'` |sudo tee -a /data/logs/install_version.txt
-    sudo echo postgres version: `docker exec -it kong-database  bash -c "env |grep PG_MAJOR |cut -d= -f2"` |sudo tee -a /data/logs/install_version.txt
+    sudo echo postgres version: `docker exec -it kong-postgres  bash -c "psql -V"` |sudo tee -a /data/logs/install_version.txt
 
 - name: Check kong Service
   shell: sudo docker ps
